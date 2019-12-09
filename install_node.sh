@@ -14,7 +14,7 @@ curl -fsSL https://download.docker.com/linux/debian/gpg |  apt-key add -
 add-apt-repository  "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg |  apt-key add -
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.lilast.d/kubernetes.list
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 cat /etc/apt/sources.list.d/kubernetes.list
 
 echo -e "\n\n \e[95m==== installation  kube ====\n\n\e[m"

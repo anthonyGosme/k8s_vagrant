@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     master.vm.provision "shell", path: "install_master.sh"
     master.vm.provider "virtualbox" do |vb|
       vb.memory = "1200"
-      vb.gui = true
+      vb.gui = false
       vb.cpus = 2
     end
   end  
