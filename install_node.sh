@@ -6,7 +6,8 @@ cat /etc/hosts
 echo "localhost 192.168.56.4" >> /etc/hosts
 echo -e "\n\n \e[95m==== installation tools  ====\n\n\e[m"
 #echo 'Acquire::http::Proxy "http://192.168.56.10:3142";' > /etc/apt/apt.conf.d/02proxy
-apt-get install squid-deb-proxy-client
+#apt-get install squid-deb-proxy-client
+echo 'Acquire::http::Proxy "http://192.168.56.10:3142";' > /etc/apt/apt.conf.d/02proxy
 apt-get update && apt-get install -y --fix-missing nmap apt-transport-https sshpass ca-certificates curl gnupg-agent software-properties-common gnupg2 nmap 
 
 echo -e "\n\n \e[95m==== installation docker  ====\n\n\e[m"

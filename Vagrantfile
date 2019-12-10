@@ -42,10 +42,9 @@ Vagrant.configure("2") do |config|
   config.vm.define "repoclient1" do |repoclient1|
     repoclient1.vm.box = "debian/contrib-stretch64"
     repoclient1.vm.hostname ="repoclient1"
-
     repoclient1.vm.network "private_network", ip: "192.168.56.5"
     repoclient1.vm.network "public_network", ip: "192.168.56.5"
-  #  repoclient1.vm.provision "shell", path: "repoclient1.sh"
+	repoclient1.vm.provision "shell", path: "install_repo_client.sh"
     repoclient1.vm.provider "virtualbox" do |vb|
       vb.memory = "300"
       vb.gui = false
@@ -59,7 +58,7 @@ Vagrant.configure("2") do |config|
 
     repoclient2.vm.network "private_network", ip: "192.168.56.6"
     repoclient2.vm.network "public_network", ip: "192.168.56.6"
-   # repoclient2.vm.provision "shell", path: "repoclient2.sh"
+    repoclient2.vm.provision "shell", path: "install_repo_client.sh"
     repoclient2.vm.provider "virtualbox" do |vb|
       vb.memory = "300"
       vb.gui = false
@@ -73,7 +72,7 @@ Vagrant.configure("2") do |config|
 	repocache.vm.network :forwarded_port, guest: 3142, host: 3142
     repocache.vm.network "private_network", ip: "192.168.56.10"
     repocache.vm.network "public_network", ip: "192.168.56.10"
-    repocache.vm.provision "shell", path: "repocache.sh"
+    repocache.vm.provision "shell", path: "install_repo.sh"
     repocache.vm.provider "virtualbox" do |vb|
       vb.memory = "300"
       vb.gui = false
