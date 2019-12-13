@@ -28,3 +28,6 @@
 *.box
 
 # End of https://www.gitignore.io/api/git,vagrant
+
+## tests
+test/*
