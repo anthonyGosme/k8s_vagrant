@@ -5,7 +5,7 @@ swapoff -a
 echo -e "\n\n \e[95m==== install apt-cacher  ====\n\n\e[m"
 apt-get update 
 
-apt install apt-cacher-ng
+apt install -y apt-cacher-ng
 echo "PassThroughPattern: .*">> /etc/apt-cacher-ng/acng.conf
 sleep 1
 echo 'Acquire::http::Proxy "http://192.168.56.10:3142";' > /etc/apt/apt.conf.d/02proxy
