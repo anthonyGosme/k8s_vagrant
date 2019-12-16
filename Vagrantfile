@@ -38,6 +38,7 @@
 	#kmaster.vm.box_version = "9.4.0"
     kmaster.vm.hostname ="kmaster"
     kmaster.vm.network :forwarded_port, guest: 8001, host: 8001
+	kmaster.vm.network :forwarded_port, guest: 80, host: 80
     kmaster.vm.network "private_network", ip: "192.168.56.2"
     kmaster.vm.network "public_network", ip: "192.168.56.2"
     kmaster.vm.provision "shell", path: "install_master.sh"
