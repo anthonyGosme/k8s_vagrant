@@ -1,6 +1,6 @@
 #!/bin/bash -x
 sudo su
-
+alias k=kubectl
 echo -e "\n\n \e[95m==== set the master cluster IP  ====\n\n\e[m"
 swapoff -a
 cat /etc/hosts
@@ -81,9 +81,18 @@ subjects:
 EOF
 kubectl apply -f admin.yaml  
 
+#echo -e "\n\n \e[95m==== change node ports ====\n\n\e[m"
+#cp /etc/kubernetes/manifests/kube-apiserver.yaml /tmp/kube-apiserver.yaml
+#sed -i 's/ - --tls-cert-file/ - --service-node-port-range=30000-30020\n    - --tls-cert-file/' /etc/kubernetes/manifests/kube-apiserver.yaml
+
 echo -e "\n\n \e[95m==== create proxy ====\n\n\e[m"
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta6/aio/deploy/recommended.yaml
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
 
+echo "dashboard K8S http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/." >> /shared/url.html
+
 echo "\e[95mget token and goto http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/. \e[m"
-kubectl proxy --address='0.0.0.0' --port=8001 --accept-hosts='.*'
+nohup kubectl proxy --address='0.0.0.0' --port=8001 --accept-hosts='.*'  2> /dev/null &
+
+
+

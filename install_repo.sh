@@ -12,3 +12,7 @@ echo 'Acquire::http::Proxy "http://192.168.56.10:3142";' > /etc/apt/apt.conf.d/0
 systemctl restart apt-cacher-ng
 systemctl status apt-cacher-ng
 echo -e "\n\n \e[95m==== browser : http://192.168.56.10:3142/acng-report.html \n chached repo list /etc/apt-cacher-ng/backends_debian  ====\n\n\e[m"
+
+
+echo  " browser cache : http://192.168.56.10:3142/acng-report.html ">> /shared/url.html
+apt-get install -y htop
